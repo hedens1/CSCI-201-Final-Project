@@ -68,7 +68,7 @@ void Library::loadData() {
         string name;
         char comma;
 
-        // Ensure this format matches your file exactly (id, name)
+     
         if (!(iss >> id >> comma)) continue; 
         getline(iss, name);
 
@@ -91,9 +91,7 @@ void Library::saveData() {
             case Genre::Biography: genreStr = "Biography"; break;
         }
 
-        // Note: Your original save logic had Genre first, but load logic expected Title first. 
-        // Ensure Save/Load formats match exactly. Based on your Load code: Title,Author,Genre,Type
-        bookFile << b->getTitle() << "," << b->getAuthor() << "," << genreStr << ",";
+         bookFile << b->getTitle() << "," << b->getAuthor() << "," << genreStr << ",";
 
         const EBook* ebook = dynamic_cast<const EBook*>(b);
         const PrintedBook* printed = dynamic_cast<const PrintedBook*>(b);
