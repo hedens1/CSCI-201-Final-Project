@@ -1,0 +1,27 @@
+#include "Transaction.h"
+#include <sstream>
+#include <iomanip>
+#include <chrono>   // Added: Required for chrono::system_clock
+#include <ctime>    // Added: Required for time_t and localtime
+#include <iostream> // Added: Required for cout and endl
+
+using namespace std;
+
+Transaction::Transaction(int pid, string bt) : patronId(pid), bookTitle(bt) {
+    
+    // Get the current date and time
+    // needed for future system updates for overdue library books
+    auto now = chrono::system_clock::now();
+    time_t now_time = chrono::system_clock::to_time_t(now);
+    tm local_tm = *localtime(&now_time);
+
+    // Formatted the date as "DD-MM-YYYY"
+    stringstream ss;
+    ss << put_time(&local_tm, "%d-%m-%Y");
+    date = ss.str();
+}
+
+void Transaction::displayTransaction() const {
+    cout << "Patron ID: " << patronId << ", Book Title: " << bookTitle 
+         << ", Date: " << date << endl;
+}   

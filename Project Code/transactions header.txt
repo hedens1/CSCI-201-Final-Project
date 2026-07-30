@@ -1,0 +1,21 @@
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
+
+#include <string>
+//to keep a running history of who has what book, and how many, as well as when they checked it out. 
+//could add to this for how long it's been out and then add a function for overdue books. 
+class Transaction {
+    int patronId;
+    std::string bookTitle;
+    std::string date;
+
+public:
+    Transaction(int pid, std::string bt);
+    void displayTransaction() const;
+
+    int getPatronId() const { return patronId; }
+    std::string getBookTitle() const { return bookTitle; }
+    std::string getDate() const { return date; }
+};
+
+#endif // TRANSACTION_H   
